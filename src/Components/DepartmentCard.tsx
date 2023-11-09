@@ -24,7 +24,6 @@ const DepartmentCard: React.FC<DepartmentCardProps> = ({
       imageUri: imageUri,
       description: description,
     } as DepartmentCardProps);
-    console.log(imageUri);
   };
 
   return (

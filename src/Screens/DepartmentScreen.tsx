@@ -14,7 +14,6 @@ const DepartmentScreen = () => {
   const {token} = useValidateUser();
 
   useEffect(() => {
-    console.log(token);
     if (token !== null) {
       departmentFetch(token);
     }

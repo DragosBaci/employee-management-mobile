@@ -47,7 +47,6 @@ const EmployeeDetailScreen = ({route}: any) => {
   }, [employeeResponse]);
 
   useEffect(() => {
-    console.log(subordinatesResponse);
     if (subordinatesResponse) {
       setSubordinates(subordinatesResponse);
     }

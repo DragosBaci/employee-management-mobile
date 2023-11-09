@@ -14,6 +14,9 @@ const DepartmentDetailScreen = ({route}: any) => {
   const {id, imageUri, description} = route.params;
   const [subdepartments, setSubdepartments] = useState<departmentType[]>([]);
   const [employees, setEmployees] = useState<employeeType[]>([]);
+  const [employeesInSubdepartment, setEmployeesInSubdepartment] = useState<
+    employeeType[]
+  >([]);
   const {token} = useValidateUser();
 
   const subdepartmentObjectRequestUrl = requestUrls.subdepartments.replace(
@@ -26,14 +29,24 @@ const DepartmentDetailScreen = ({route}: any) => {
     `${id}`,
   );
 
+  const employeesInDepartmentAndSubdepartmentRequestUrl =
+    requestUrls.employeesInDepartmentAndSubdepartment.replace(':id', `${id}`);
+
   const {fetcher: subdepartmentsPayload, response: subdepartmentsResponse} =
     useGetCustomFetch<departmentType[], string>(subdepartmentObjectRequestUrl);
   const {fetcher: employeesPayload, response: employeesResponse} =
     useGetCustomFetch<employeeType[], string>(employeesObjectRequestUrl);
+  const {
+    fetcher: employeesInDepartmentAndSubdepartmentPayload,
+    response: employeesInDepartmentAndSubdepartmentResponse,
+  } = useGetCustomFetch<employeeType[], string>(
+    employeesInDepartmentAndSubdepartmentRequestUrl,
+  );
 
   useEffect(() => {
     subdepartmentsPayload(token);
     employeesPayload(token);
+    employeesInDepartmentAndSubdepartmentPayload(token);
   }, [token]);
 
   useEffect(() => {
@@ -47,6 +60,14 @@ const DepartmentDetailScreen = ({route}: any) => {
       setEmployees(employeesResponse);
     }
   }, [employeesResponse]);
+
+  useEffect(() => {
+    if (employeesInDepartmentAndSubdepartmentResponse) {
+      setEmployeesInSubdepartment(
+        employeesInDepartmentAndSubdepartmentResponse,
+      );
+    }
+  }, [employeesInDepartmentAndSubdepartmentResponse]);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -64,6 +85,17 @@ const DepartmentDetailScreen = ({route}: any) => {
       <SubtitleCard text={'Employees In Department'} />
       {employees &&
         employees.map((item: any) => (
+          <EmployeeCard
+            name={item.name}
+            email={item.email}
+            imageUri={item.imageUri}
+            id={item.id}
+            key={item.id}
+          />
+        ))}
+      <SubtitleCard text={'Employees In Department And Subdepartments'} />
+      {employeesInSubdepartment &&
+        employeesInSubdepartment.map((item: any) => (
           <EmployeeCard
             name={item.name}
             email={item.email}

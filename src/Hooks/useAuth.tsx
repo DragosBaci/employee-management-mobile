@@ -35,7 +35,6 @@ const useAuthService = () => {
 
   useEffect(() => {
     if (loginResponse) {
-      console.log(loginResponse);
       if (loginResponse.token) {
         setAuthFields(loginResponse?.status ? undefined : loginResponse);
         navigation.dispatch(

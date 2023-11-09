@@ -7,4 +7,5 @@ export enum RouterKey {
   DEPARTMENT_SCREEN = 'DepartmentScreen',
   DEPARTMENT_DETAIL_SCREEN = 'DepartmentDetailScreen',
   BOTTOM_TAB_NAVIGATOR = 'BottomTabNavigator',
+  SEND_EMAIL_SCREEN = 'SendEmailScreen',
 }

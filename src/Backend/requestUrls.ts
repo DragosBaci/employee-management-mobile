@@ -18,6 +18,10 @@ const requestUrls = {
   subdepartments: `${backendEnvironment}${routeBase}/subdepartment/${id}`,
 
   employeesInDepartment: `${backendEnvironment}${routeBase}/department/${id}/employees`,
+
+  sendEmail: `${backendEnvironment}${routeBase}/send-email`,
+
+  employeesInDepartmentAndSubdepartment: `${backendEnvironment}${routeBase}/employee/in-department/${id}`,
 };
 
 export default requestUrls;

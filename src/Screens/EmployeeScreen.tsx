@@ -3,11 +3,14 @@ import useValidateUser from '../Hooks/useValidateUser';
 import requestUrls from '../Backend/requestUrls';
 import useGetCustomFetch from '../Hooks/useGetCustomFetch';
 import EmployeeCard from '../Components/EmployeeCard';
-import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import { Button, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import Colors from '../Utils/Colors';
 import {employeeType} from '../Types/Types';
+import { useNavigation } from "@react-navigation/native";
+import { RouterKey } from "../Navigation/Routes";
 
 const EmployeeScreen = () => {
+  const navigation = useNavigation();
   const [employeeList, setEmployeeList] = useState<employeeType[]>([]);
   const {response, fetcher: employeeFetch} = useGetCustomFetch<
     employeeType[],
@@ -27,8 +30,13 @@ const EmployeeScreen = () => {
     }
   }, [response]);
 
+  const handlePressHandler = () => {
+    navigation.navigate(RouterKey.SEND_EMAIL_SCREEN as never);
+  };
+
   return (
     <SafeAreaView style={styles.rootContainer}>
+      <Button title={'Send Email'} onPress={handlePressHandler} />
       <ScrollView>
         {employeeList.map((item: any) => (
           <EmployeeCard

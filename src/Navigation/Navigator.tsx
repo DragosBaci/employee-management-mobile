@@ -1,13 +1,14 @@
-import {RouterKey} from './Routes';
-import LoginScreen from '../Screens/LoginScreen';
-import RegisterScreen from '../Screens/RegisterScreen';
-import {createStackNavigator} from '@react-navigation/stack';
-import HomeScreen from '../Screens/HomeScreen';
-import EmployeeScreen from '../Screens/EmployeeScreen';
-import BottomTabNavigator from './BottomTabNavigator';
-import DepartmentScreen from '../Screens/DepartmentScreen';
-import DepartmentDetailScreen from '../Screens/DepartmentDetailScreen/DepartmentDetailScreen';
-import EmployeeDetailScreen from '../Screens/EmployeeDetailScreen/EmployeeDetailScreen';
+import { RouterKey } from "./Routes";
+import LoginScreen from "../Screens/LoginScreen";
+import RegisterScreen from "../Screens/RegisterScreen";
+import { createStackNavigator } from "@react-navigation/stack";
+import HomeScreen from "../Screens/HomeScreen";
+import EmployeeScreen from "../Screens/EmployeeScreen";
+import BottomTabNavigator from "./BottomTabNavigator";
+import DepartmentScreen from "../Screens/DepartmentScreen";
+import DepartmentDetailScreen from "../Screens/DepartmentDetailScreen/DepartmentDetailScreen";
+import EmployeeDetailScreen from "../Screens/EmployeeDetailScreen/EmployeeDetailScreen";
+import SendEmailScreen from "../Screens/SendEmailScreen";
 
 const screenRoutes = [
   {name: RouterKey.REGISTER_SCREEN, component: RegisterScreen},
@@ -18,6 +19,7 @@ const screenRoutes = [
   {name: RouterKey.DEPARTMENT_SCREEN, component: DepartmentScreen},
   {name: RouterKey.DEPARTMENT_DETAIL_SCREEN, component: DepartmentDetailScreen},
   {name: RouterKey.EMPLOYEE_DETAIL_SCREEN, component: EmployeeDetailScreen},
+  {name: RouterKey.SEND_EMAIL_SCREEN, component: SendEmailScreen},
 ];
 
 const tabBarOptions = {

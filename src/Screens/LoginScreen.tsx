@@ -23,7 +23,7 @@ av.addListener(() => {
 });
 
 const LoginScreen = () => {
-  const {logUserIn, loginResponse} = useAuth();
+  const {logUserIn} = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();

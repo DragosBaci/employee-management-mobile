@@ -68,7 +68,6 @@ const DepartmentDetailScreen = ({route}: any) => {
       );
     }
   }, [employeesInDepartmentAndSubdepartmentResponse]);
-
   return (
     <ScrollView style={styles.rootContainer}>
       <DetailCard imageUri={imageUri} description={description} />
